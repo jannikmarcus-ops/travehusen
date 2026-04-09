@@ -163,21 +163,21 @@ input[type="range"]::-moz-range-thumb:hover{transform:scale(1.2);box-shadow:0 0 
             <div class="sel-wrap">
               <select id="haustyp" onchange="calc()">
                 <optgroup label="Baufeld 12 — H&#228;user">
-                  <option value="399000|90|Tiny MRH (BF 12.4)" selected>Tiny MRH 90 m&#178; &#8212; 399.000 &#8364;</option>
+                  <option value="399000|90|MRH (BF 12.4)" selected>MRH 90 m&#178; &#8212; 399.000 &#8364;</option>
                   <option value="419000|100|MRH 6m (BF 12.2)">MRH 100 m&#178; &#8212; 419.000 &#8364;</option>
                   <option value="465000|111|DHH V2 (BF 12.3)">DHH V2 111 m&#178; &#8212; 465.000 &#8364;</option>
                   <option value="489000|111|DHH V1 (BF 12.3)">DHH V1 111 m&#178; &#8212; 489.000 &#8364;</option>
                   <option value="509000|120|DHH V2 (BF 12.5)">DHH V2 120 m&#178; &#8212; 509.000 &#8364;</option>
                   <option value="519000|120|DHH V1 (BF 12.5)">DHH V1 120 m&#178; &#8212; 519.000 &#8364;</option>
                   <option value="559000|129|ERH+Einlieger (BF 12.2)">ERH+Einlieger 129 m&#178; &#8212; 559.000 &#8364;</option>
-                  <option value="565000|133|ERH gedreht (BF 12.4)">ERH gedreht 133 m&#178; &#8212; 565.000 &#8364;</option>
+                  <option value="569000|133|ERH gedreht (BF 12.4)">ERH gedreht 133 m&#178; &#8212; 569.000 &#8364;</option>
                   <option value="569000|134|ERH 5m (BF 12.2)">ERH 134 m&#178; &#8212; 569.000 &#8364;</option>
                 </optgroup>
                 <optgroup label="Haus 3 — Wohnungen">
-                  <option value="291000|43|1,5-Zi (1.OG Nord)">1,5-Zi. 43 m&#178; &#8212; ab 291.000 &#8364;</option>
-                  <option value="503000|71|3-Zi (1.OG S&#252;d)">3-Zi. 71 m&#178; &#8212; ab 503.000 &#8364;</option>
-                  <option value="611000|86|3,5-Zi (1.OG S&#252;d)">3,5-Zi. 86 m&#178; &#8212; ab 611.000 &#8364;</option>
-                  <option value="835000|99|2-Zi Premium (3.OG)">2-Zi. Premium 99 m&#178; &#8212; 835.000 &#8364;</option>
+                  <option value="295000|43|1,5-Zi (1.OG)">1,5-Zi. 43 m&#178; &#8212; ab 295.000 &#8364;</option>
+                  <option value="475000|71|3-Zi (1.OG)">3-Zi. 71 m&#178; &#8212; ab 475.000 &#8364;</option>
+                  <option value="575000|86|3,5-Zi (1.OG)">3,5-Zi. 86 m&#178; &#8212; ab 575.000 &#8364;</option>
+                  <option value="885000|99|2-Zi Staffelgeschoss (3.OG)">2-Zi. Staffelgeschoss 99 m&#178; &#8212; 885.000 &#8364;</option>
                 </optgroup>
                 <optgroup label="Konkurrenz — Skandinavienkai">
                   <option value="399990|120|Skandin. 120m&#178;">Skandin. 120 m&#178; &#8212; 399.990 &#8364;</option>
@@ -212,7 +212,7 @@ input[type="range"]::-moz-range-thumb:hover{transform:scale(1.2);box-shadow:0 0 
             <div class="energy-item">
               <div class="lbl">Travehusen</div>
               <div class="val" style="color:var(--brand-green)">~700 &#8364;/a</div>
-              <div style="font-size:0.68rem;color:var(--text-muted);margin-top:2px">Geothermie (JAZ 4,5)</div>
+              <div style="font-size:0.68rem;color:var(--text-muted);margin-top:2px">Erdsonden-Geothermie</div>
             </div>
             <div class="energy-item">
               <div class="lbl">Skandinavienkai</div>
@@ -277,14 +277,14 @@ var F=function(n){return n.toLocaleString('de-DE',{maximumFractionDigits:0})};
 var FE=function(n){return F(n)+' \u20AC'};
 
 var types=[
-  {n:'Tiny MRH 90 m\u00B2',p:399000,q:90,t:'BF 12.4',v:'399000|90|Tiny MRH (BF 12.4)'},
+  {n:'MRH 90 m\u00B2',p:399000,q:90,t:'BF 12.4',v:'399000|90|MRH (BF 12.4)'},
   {n:'MRH 100 m\u00B2',p:419000,q:100,t:'BF 12.2',v:'419000|100|MRH 6m (BF 12.2)'},
   {n:'DHH V2 111 m\u00B2',p:465000,q:111,t:'BF 12.3',v:'465000|111|DHH V2 (BF 12.3)'},
   {n:'DHH V1 111 m\u00B2',p:489000,q:111,t:'BF 12.3',v:'489000|111|DHH V1 (BF 12.3)'},
   {n:'DHH V2 120 m\u00B2',p:509000,q:120,t:'BF 12.5',v:'509000|120|DHH V2 (BF 12.5)'},
   {n:'DHH V1 120 m\u00B2',p:519000,q:120,t:'BF 12.5',v:'519000|120|DHH V1 (BF 12.5)'},
   {n:'ERH+Einlieger',p:559000,q:129,t:'BF 12.2',v:'559000|129|ERH+Einlieger (BF 12.2)'},
-  {n:'ERH gedreht',p:565000,q:133,t:'BF 12.4',v:'565000|133|ERH gedreht (BF 12.4)'},
+  {n:'ERH gedreht',p:569000,q:133,t:'BF 12.4',v:'569000|133|ERH gedreht (BF 12.4)'},
   {n:'ERH 134 m\u00B2',p:569000,q:134,t:'BF 12.2',v:'569000|134|ERH 5m (BF 12.2)'},
   {n:'',p:0,q:0,t:'',s:1},
   {n:'Skandin. 120 m\u00B2',p:399990,q:120,t:'Wettbewerb',c:1},
