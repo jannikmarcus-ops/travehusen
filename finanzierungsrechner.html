@@ -135,6 +135,34 @@ input[type="range"]::-moz-range-thumb:hover{transform:scale(1.2);box-shadow:0 0 
 </style>
 </head>
 <body>
+<div id="pw-gate" style="position:fixed;inset:0;z-index:9999;background:#fafafa;display:flex;align-items:center;justify-content:center;">
+  <div style="text-align:center;font-family:'Outfit',sans-serif;">
+    <div style="font-size:14px;color:#7C7C7C;margin-bottom:8px;">Geschützter Bereich</div>
+    <div style="font-size:22px;font-weight:600;color:#1a1a1a;margin-bottom:24px;">Travehusen Finanzierungsrechner</div>
+    <input id="pw-input" type="password" placeholder="Passwort" autofocus
+      style="font-family:'Outfit',sans-serif;font-size:16px;padding:12px 20px;border:1px solid #ddd;border-radius:8px;width:280px;text-align:center;outline:none;"
+      onkeydown="if(event.key==='Enter')checkPw()">
+    <br>
+    <button onclick="checkPw()"
+      style="font-family:'Outfit',sans-serif;margin-top:12px;padding:10px 32px;background:#1A472A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:500;cursor:pointer;">
+      Zugang
+    </button>
+    <div id="pw-err" style="color:#c0392b;font-size:13px;margin-top:12px;display:none;">Falsches Passwort</div>
+  </div>
+</div>
+<script>
+function checkPw(){
+  var h='8a9f3b2c7e1d4f6a0b5c8d2e9f1a3b7c';
+  var inp=document.getElementById('pw-input').value;
+  var hash=Array.from(inp).reduce(function(a,c){a=((a<<5)-a)+c.charCodeAt(0);return a&a;},0);
+  var check=[75,105,101,108,101,114,83,116,114,97,115,115,101,53,55,55,98];
+  var ok=inp.length===check.length;
+  for(var i=0;i<check.length;i++){if(inp.charCodeAt(i)!==check[i])ok=false;}
+  if(ok){document.getElementById('pw-gate').style.display='none';sessionStorage.setItem('tv-auth','1');}
+  else{document.getElementById('pw-err').style.display='block';document.getElementById('pw-input').value='';}
+}
+if(sessionStorage.getItem('tv-auth')==='1'){document.getElementById('pw-gate').style.display='none';}
+</script>
 
 <div class="header">
   <div class="header-left">
